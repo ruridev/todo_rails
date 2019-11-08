@@ -2,8 +2,11 @@ default: &default
   adapter: sqlite3
 
 development:
+  adapter: sqlite3
   database: myapp_development
 test:
+  adapter: sqlite3
   database: myapp_test
 production:
+  adapter: sqlite3
   database: myapp_production
