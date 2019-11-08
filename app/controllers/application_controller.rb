@@ -24,7 +24,7 @@ class ApplicationController < ActionController::API
   def authenticate_token
     authenticate_with_http_token do |token, options|
       # TODO: Auth API check
-      token == 'FOO'
+      return false unless token == 'FOO'
       @current_user_id = 2
     end
   end
