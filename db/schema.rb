@@ -10,16 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_121951) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 2019_11_08_224152) do
 
   create_table "todos", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "body", null: false
+    t.string "text", null: false
     t.date "date", null: false
-    t.integer "complete", default: 0
+    t.boolean "checked", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

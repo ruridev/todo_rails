@@ -4,7 +4,7 @@ https://docs.docker.com/compose/rails/
 
 # docker 컨테이너 안에서 명령어 실행
 
-docker-compose run web rails generate scaffold todo user_id:integer body:string date:date complete:integer
+docker-compose run web rails generate scaffold todo user_id:integer text:string date:date checked:boolean
 docker-compose run web rails db:migrate RAILS_ENV=development
 
 # HOST
@@ -30,7 +30,7 @@ $ curl -X GET -H 'Authorization: Token FOO' -H 'Content-Type:application/json' h
 ### POST /api/v1/todo
 
 ```sh
-curl -H 'Authorization: Token FOO' -H "Content-Type: application/json" -d '{"todo":{"body": "u-kan", "date": "2019/10/01"}}' http://$TODO_SERVER/api/v1/todo
+curl -H 'Authorization: Token FOO' -H "Content-Type: application/json" -d '{"todo":{"text": "u-kan", "date": "2019/10/01"}}' http://$TODO_SERVER/api/v1/todo
 ```
 
 ### GET /api/v1/todo
@@ -48,9 +48,9 @@ curl -X DELETE -H 'Authorization: Token FOO' -H 'Content-Type:application/json' 
 ### PUT /api/v1/todo/{id}
 
 ```sh
-curl -X PUT -H 'Authorization: Token FOO' -H 'Content-Type:application/json' -d '{"todo":{"complete": "1"}}' http://$TODO_SERVER/api/v1/todo/1
+curl -X PUT -H 'Authorization: Token FOO' -H 'Content-Type:application/json' -d '{"todo":{"checked": true}}' http://$TODO_SERVER/api/v1/todo/1
 ```
 
 ```sh
-curl -X PUT -H 'Authorization: Token FOO' -H 'Content-Type:application/json' -d '{"todo":{"body": "body"}}' http://$TODO_SERVER/api/v1/todo/1
+curl -X PUT -H 'Authorization: Token FOO' -H 'Content-Type:application/json' -d '{"todo":{"text": "text"}}' http://$TODO_SERVER/api/v1/todo/1
 ```

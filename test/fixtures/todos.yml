@@ -2,12 +2,12 @@
 
 one:
   user_id: 1
-  body: MyString
+  text: MyString
   date: 2019-11-04
-  complete: 1
+  checked: fallse
 
 two:
   user_id: 1
-  body: MyString
+  text: MyString
   date: 2019-11-04
-  complete: 1
+  checked: false
