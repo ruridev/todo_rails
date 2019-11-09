@@ -62,7 +62,7 @@ module Api
 
         # Only allow a trusted parameter "white list" through.
         def todo_params
-          params.require(:todo).permit(:text, :date, :checked)
+          params.require(:todo).permit(:text, :date, :checked, :kind, :display_order)
         end
     end
   end

@@ -54,3 +54,11 @@ curl -X PUT -H 'Authorization: Token FOO' -H 'Content-Type:application/json' -d 
 ```sh
 curl -X PUT -H 'Authorization: Token FOO' -H 'Content-Type:application/json' -d '{"todo":{"text": "text"}}' http://$TODO_SERVER/api/v1/todo/1
 ```
+
+```sh
+curl -X PUT -H 'Authorization: Token FOO' -H 'Content-Type:application/json' -d '{"todo":{"kind": "1"}}' http://$TODO_SERVER/api/v1/todo/1
+```
+
+```sh
+curl -X PUT -H 'Authorization: Token FOO' -H 'Content-Type:application/json' -d '{"todo":{"display_order": 3}}' http://$TODO_SERVER/api/v1/todo/1
+```
