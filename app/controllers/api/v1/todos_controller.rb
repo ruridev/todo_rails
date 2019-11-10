@@ -5,17 +5,7 @@ module Api
 
       # GET /todos
       def index
-        condition = {user_id: @current_user_id}
-        if params[:day]
-          condition[:date] = "#{params[:year]}/#{params[:month]}/#{params[:day]}".to_date
-        elsif params[:month]
-          date = "#{params[:year]}/#{params[:month]}/01}".to_date
-          condition[:date] =(date)...(date + 1.month)
-        elsif params[:year]
-          date = "#{params[:year]}/01/01}".to_date
-          condition[:date] =(date)...(date + 1.year)
-        end
-        @todos = Todo.where(condition)
+        @todos = Todo.where(conditions).order(:display_order)
 
         render json: @todos
       rescue
@@ -42,7 +32,8 @@ module Api
 
       # PATCH/PUT /todos/1
       def update
-        if @todo.update(todo_params)
+        
+        if TodoService.new(@todo).update(todo_params)
           render json: @todo
         else
           render json: @todo.errors, status: :unprocessable_entity
@@ -51,7 +42,7 @@ module Api
 
       # DELETE /todos/1
       def destroy
-        @todo.destroy
+        TodoService.new(@todo).destroy
       end
 
       private
@@ -63,6 +54,20 @@ module Api
         # Only allow a trusted parameter "white list" through.
         def todo_params
           params.require(:todo).permit(:text, :date, :checked, :kind, :display_order)
+        end
+
+        def conditions
+          condition = {user_id: @current_user_id}
+          if params[:day]
+            condition[:date] = "#{params[:year]}/#{params[:month]}/#{params[:day]}".to_date
+          elsif params[:month]
+            date = "#{params[:year]}/#{params[:month]}/01}".to_date
+            condition[:date] =(date)...(date + 1.month)
+          elsif params[:year]
+            date = "#{params[:year]}/01/01}".to_date
+            condition[:date] =(date)...(date + 1.year)
+          end
+          condition
         end
     end
   end
