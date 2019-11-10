@@ -4,7 +4,9 @@ class TodoService
   end
 
   def update(params)
-    update_display_order(params[:display_order]) if params[:display_order]
+    return update_display_order(params[:display_order]) if params[:display_order]
+    
+    todo.update(params)
   end
 
   def destroy
