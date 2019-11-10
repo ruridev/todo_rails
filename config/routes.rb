@@ -8,9 +8,6 @@ Rails.application.routes.draw do
           get 'list/:year/:month/:day', to: 'todos#index'
         end
       end
-
-
-get 'photos/:id/:user_id', to: 'photos#show'
     end
   end
 end
