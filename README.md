@@ -12,7 +12,7 @@ docker-compose run web rails db:migrate RAILS_ENV=development
 AuthAPI와 연계하기 전까지는 `FOO` 를 토큰으로 넘겨주세요.
 
 ```sh
-$ curl -X GET -H 'Authorization: Token BAR' -H 'Content-Type:application/json' http://http://3.115.63.100:3000/api/v1/todo
+$ curl -X GET -H 'Authorization: Token BAR' -H 'Content-Type:application/json' http://3.115.63.100:3000/api/v1/todo
 {"message":"token invalid"}
 ```
 
@@ -24,7 +24,7 @@ $ curl -X GET -H 'Authorization: Token FOO' -H 'Content-Type:application/json' h
 ### POST /api/v1/todo
 
 ```sh
-curl -H 'Authorization: Token FOO' -H "Content-Type: application/json" -d '{"todo":{"body": "u-kan", "date": "2019/10/01"}}' http://0.0.0.0:3000/api/v1/todo
+curl -H 'Authorization: Token FOO' -H "Content-Type: application/json" -d '{"todo":{"body": "u-kan", "date": "2019/10/01"}}' http://3.115.63.100:3000/api/v1/todo
 ```
 
 ### GET /api/v1/todo
